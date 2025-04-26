@@ -1,12 +1,13 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.User.Gender;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
 public class RegisterDto {
     @NotBlank(message = "Username is required")
-    @Size(min = 4, max = 20, message = "Username must be between 4 and 20 characters")
+    @Size(min = 4, max = 50, message = "Username must be between 4 and 50 characters")
     private String username;
 
     @NotBlank(message = "Password is required")
@@ -17,6 +18,6 @@ public class RegisterDto {
     @Email(message = "Email should be valid")
     private String email;
 
-    @NotBlank(message = "Gender is required")
-    private String gender;
+    @NotNull(message = "Gender is required")
+    private Gender gender; // Sử dụng enum trực tiếp thay vì String
 }

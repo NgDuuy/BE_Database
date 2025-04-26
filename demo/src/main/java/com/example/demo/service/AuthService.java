@@ -37,8 +37,7 @@ public class AuthService {
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
         user.setEmail(registerDto.getEmail());
-        user.setGender(User.Gender.valueOf(registerDto.getGender()));
-
+        user.setGender(registerDto.getGender()); // Sử dụng trực tiếp enum từ DTO
         userRepository.save(user);
 
         Authentication authentication = authenticationManager.authenticate(
